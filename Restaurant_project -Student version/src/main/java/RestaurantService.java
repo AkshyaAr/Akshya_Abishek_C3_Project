@@ -1,11 +1,12 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
+import java.util.ListIterator;
 
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
-    public Restaurant findRestaurantByName(String restaurantName){
+
+    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
         Restaurant searchRestaurant = null, foundRestaurant = null;
         for (Restaurant restaurant : restaurants) {
             searchRestaurant = restaurant;
@@ -14,18 +15,24 @@ public class RestaurantService {
                 break;
             }
         }
+        if (foundRestaurant==null)
+            throw new restaurantNotFoundException("No Restaurant Found");
         return foundRestaurant;
     }
+
+
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         Restaurant newRestaurant = new Restaurant(name, location, openingTime, closingTime);
         restaurants.add(newRestaurant);
         return newRestaurant;
     }
+
     public Restaurant removeRestaurant(String restaurantName) throws restaurantNotFoundException {
         Restaurant restaurantToBeRemoved = findRestaurantByName(restaurantName);
         restaurants.remove(restaurantToBeRemoved);
         return restaurantToBeRemoved;
     }
+
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }

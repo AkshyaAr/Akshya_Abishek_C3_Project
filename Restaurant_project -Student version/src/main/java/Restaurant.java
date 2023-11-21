@@ -3,34 +3,36 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Restaurant {
-
     private String name;
+
+    public String getLocation() {
+        return location;
+    }
+
     private String location;
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
 
-    int price = 0;
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
-        
     }
 
-     LocalTime getClosingTime() {
-        return closingTime;
-    }
     public boolean isRestaurantOpen() {
-        return getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime);
+        return ((getCurrentTime().isAfter(openingTime))
+                && (getCurrentTime().isBefore(closingTime)));
     }
+
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
+
     public List<Item> getMenu() {
         return menu;
     }
+
     private Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
@@ -38,11 +40,12 @@ public class Restaurant {
         }
         return null;
     }
+
     public void addToMenu(String name, int price) {
         Item newItem = new Item(name,price);
         menu.add(newItem);
-
     }
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
@@ -52,7 +55,6 @@ public class Restaurant {
         menu.remove(itemToBeRemoved);
     }
     public void displayDetails(){
-
         System.out.println("Restaurant:"+ name + "\n"
                 +"Location:"+ location + "\n"
                 +"Opening time:"+ openingTime +"\n"
@@ -60,7 +62,9 @@ public class Restaurant {
                 +"Menu:"+"\n"+getMenu());
 
     }
+
     public String getName() {
         return name;
     }
+
 }
