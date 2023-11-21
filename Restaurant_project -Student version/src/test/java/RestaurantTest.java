@@ -69,4 +69,12 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void selecting_Items_From_Menu_Should_Display_Total_Order_Value() {
+        String item1 = "Sweet corn soup";
+        String item2 = "Vegetable lasagne";
+        int totalCost = calculateTotalCost(item1,item2);
+        assertEquals(388,totalCost);
+    }
+
 }
