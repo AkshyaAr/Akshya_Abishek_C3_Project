@@ -18,6 +18,7 @@ public class Restaurant {
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
+        
     }
 
      LocalTime getClosingTime() {
