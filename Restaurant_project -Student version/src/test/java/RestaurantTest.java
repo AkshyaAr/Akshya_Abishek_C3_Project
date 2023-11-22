@@ -72,6 +72,12 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // TDD
+    // On selecting items from the Menu,
+    // total order value should be displayed
+    // Implement the method calculateTotalCost in Restaurant.java
+    // the method will have the list of items as its parameters
+    // the method will return the total order value
     @Test
     public void selecting_Items_From_Menu_Should_Display_Total_Order_Value() {
 
